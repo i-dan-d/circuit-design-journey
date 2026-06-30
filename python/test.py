@@ -1,2 +1,2 @@
-a = "Duy handsome"
+a = "Duy world, my name is Duy, but you call my nicknam, Handsome!"
 print(a)
