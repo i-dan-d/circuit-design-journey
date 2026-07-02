@@ -1,0 +1,6 @@
+Tên, Điểm_Chuyên_Cần, Tham_Gia_Sự_Kiện(True/False), Đóng_Góp_Ý_TƯỞNG(True/False)
+Linh, 85, True, False
+Duy, 92, True, True
+Nam, 45, False, False
+Huong, 78, False, True
+Ngoc, 20, True, True
