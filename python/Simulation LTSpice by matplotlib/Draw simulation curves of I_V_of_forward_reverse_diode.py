@@ -32,17 +32,8 @@ ax.axvline(0, color='black', linewidth=1)  # trục y
 # ax.plot(xRV,y1RV, color="green")
 ax.plot(xFW, y2FW, label="I(D-FW)", color="red")
 ax.plot(xRV, y2RV, label="I(D-RW)", color="blue")
-
-
-
-
-
-# Tạo trục y bên phải cho dòng điện
-
-ax2 = ax.twinx()
-
-
-ax2.set_ylabel("Current (mA)")
+ax.set_xlabel("V - Voltage")
+ax.set_ylabel("mA - Current")
 
 
 plt.title("PN-Junction")
