@@ -25,18 +25,25 @@ xFW = np.array(ArrFW[0])
 y1FW = np.array(ArrFW[1])
 y2FW = np.array(ArrFW[2])
 fig, ax = plt.subplots()
+# Vẽ trục x và y
+ax.axhline(0, color='black', linewidth=1)  # trục x
+ax.axvline(0, color='black', linewidth=1)  # trục y
+# ax.plot(xFW,y1FW, color="green")
+# ax.plot(xRV,y1RV, color="green")
+ax.plot(xFW, y2FW, label="I(D-FW)", color="red")
+ax.plot(xRV, y2RV, label="I(D-RW)", color="blue")
 
-ax.plot(xRV,y1RV, color="green")
 
-ax.plot(xFW,y1FW, color="green")
+
 
 
 # Tạo trục y bên phải cho dòng điện
+
 ax2 = ax.twinx()
-ax2.plot(xRV, y2RV, label="I(D-RW)", color="blue")
-ax2.plot(xFW, y2FW, label="I(D-FW)", color="red")
+
+
 ax2.set_ylabel("Current (mA)")
-ax2.legend(loc="upper right")
+
 
 plt.title("PN-Junction")
 plt.show()
