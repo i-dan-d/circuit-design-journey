@@ -8,3 +8,4 @@ STT, Name, Scores, Detail
 3, Nam, 70, Complate the task
 4, Huong, 100, excellent
 5, Ngoc, 45, Complate the task
+6, Xuan, 65, Complate the task

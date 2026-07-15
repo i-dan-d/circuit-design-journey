@@ -4,3 +4,4 @@ Duy, 92, True, True
 Nam, 45, False, False
 Huong, 78, False, True
 Ngoc, 20, True, True
+Xuan, 40, False, True
