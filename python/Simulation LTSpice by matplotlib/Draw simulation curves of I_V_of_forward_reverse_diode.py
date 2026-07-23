@@ -17,24 +17,31 @@ with open(raw_data_reverse, 'r', encoding="utf-8") as data_RV:
 		arrRaw = rawRV.split()
 		for col in range(len(tittle)):
 			ArrRV[col].append(float(arrRaw[col]))
-xRV = np.array(ArrRV[0])
-y1RV = np.array(ArrRV[1])
-y2RV = np.array(ArrRV[2])
+xRV = np.array(ArrRV[0]); y2RV = np.array(ArrRV[2])
+xFW = np.array(ArrFW[0]); y2FW = np.array(ArrFW[2])
 
-xFW = np.array(ArrFW[0])
-y1FW = np.array(ArrFW[1])
-y2FW = np.array(ArrFW[2])
-fig, ax = plt.subplots()
-# Vẽ trục x và y
-ax.axhline(0, color='black', linewidth=1)  # trục x
-ax.axvline(0, color='black', linewidth=1)  # trục y
-# ax.plot(xFW,y1FW, color="green")
-# ax.plot(xRV,y1RV, color="green")
-ax.plot(xFW, y2FW, label="I(D-FW)", color="red")
-ax.plot(xRV, y2RV, label="I(D-RW)", color="blue")
-ax.set_xlabel("V - Voltage")
-ax.set_ylabel("mA - Current")
+# Gộp 2 nhánh (âm + dương) thành 1 đường I-V liên tục
+V = np.concatenate([xRV, xFW])
+I = np.concatenate([y2RV, y2FW])
 
+# Sắp xếp theo V tăng dần -> tránh đường bị "nhảy loạn" khi vẽ
+idx = np.argsort(V)
+V, I = V[idx], I[idx]
 
-plt.title("PN-Junction")
+fig, ax = plt.subplots(figsize=(7,5))
+ax.axhline(0, color='black', linewidth=1)
+ax.axvline(0, color='black', linewidth=1)
+
+ax.plot(V, I, color='red', label="I(D2)")
+
+ax.set_xlabel("V (Volt)")
+ax.set_ylabel("I (A)")
+ax.set_title("PN-Junction")
+
+# Dòng thuận và dòng ngược lệch nhau rất nhiều bậc độ lớn
+# -> dùng symlog để nhìn được cả 2 vùng trên cùng 1 trục tuyến tính-ish
+ax.set_yscale('symlog', linthresh=1e-9)
+
+ax.legend()
+plt.grid(alpha=0.3)
 plt.show()
