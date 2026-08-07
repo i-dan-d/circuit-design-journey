@@ -1,90 +1,76 @@
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import argparse
- # 1. Khởi tạo parser
-parser = argparse.ArgumentParser(description="Script vẽ biểu đồ LTspice")
-# 2. Thêm tham số --input (hoặc tên ngắn -i)
-parser.add_argument(
-    "-i",
-    "--input",
-    type=str,
-    required=True,
-    help="Đường dẫn tới file CSV/TXT",
-)
 
-# 3. Đọc tham số truyền từ Terminal
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--family", type=str, required=True, help="File data family curves (Vds sweep)")
+parser.add_argument("-t", "--vth", type=str, required=True, help="File data Vth extraction (Vgs sweep, Vds nhỏ)")
 args = parser.parse_args()
 
-input_file_name = f"{args.input}"
+# ============ PHẦN A: FAMILY CURVES (đẹp) ============
+df_fam = pd.read_csv(args.family, sep='\t')
 
-output_file_name = "NMOS_out.csv"
-df = pd.read_csv(input_file_name, sep='\t')
-# print("---------------------HEAD")
-# print(df.head(1))
-# print("---------------------INFO")
-# df.info()
-# print("---------------------DESCRIBE")
-# print(df.describe())
-# df.to_csv(output_file_name, index=False)
+sep_rows = df_fam.index[df_fam["V(vin)"].isna()].tolist()
+sep_rows.append(len(df_fam))
 
-# print(np.where(df["V(vin)"].isna())) #Lấy RangeIndex của value
-steps = []
-steps_array = np.where(df["V(vin)"].isna())
-steps_array = steps_array[0]
-cout_steps = len(steps_array)
+blocks = []
+start = 0
+for end in sep_rows:
+    block = df_fam.iloc[start:end].dropna(subset=["V(vin)", "V(vdd)", "Id(M1)"])
+    if len(block) > 0:
+        blocks.append(block)
+    start = end + 1
 
-for s in range(cout_steps):
-	steps.append(f"Step{s+1}/{cout_steps}")
-steps.append(steps_array)
+# ============ PHẦN B: VTH EXTRACTION (chuẩn) ============
+df_vth = pd.read_csv(args.vth, sep='\t').dropna(subset=["V(vin)", "Id(M1)"])
+Vgs = df_vth["V(vin)"].values
+Id_vth = df_vth["Id(M1)"].values
 
-data = df
-clean_data = df.loc[df["V(vdd)"].isna() == False]
-Vin_max = df["V(vin)"].max()
-# 1. Định nghĩa dòng ngưỡng I_th (ví dụ: 1 uA)
-I_th = 1e-6
+sort_idx = np.argsort(Vgs)
+Vgs = Vgs[sort_idx]
+Id_vth = Id_vth[sort_idx]
 
-# 2. Lấy dữ liệu Vin và Id dạng mảng 1D tăng dần
-v_in = df["V(vin)"].values
-i_d = df["Id(M1)"].values
-# 3. Nội suy lấy Vth tại điểm I_d = I_th
-v_th = np.interp(I_th, i_d, v_in)
-print(f"Vth (Threshold Crossing) = {v_th:.4f} V")
+_, uniq_idx = np.unique(Vgs, return_index=True)
+Vgs = Vgs[uniq_idx]
+Id_vth = Id_vth[uniq_idx]
 
+gm = np.gradient(Id_vth, Vgs)
+idx = np.argmax(gm)
+Vgs_t, Id_t, gm_max = Vgs[idx], Id_vth[idx], gm[idx]
+Vth = Vgs_t - Id_t / gm_max
 
+Vds_used = df_vth["V(vdd)"].iloc[0] if "V(vdd)" in df_vth.columns else "?"
+print(f"Vth = {Vth:.4f} V   (đo tại Vds = {Vds_used}V, độ phân giải Vgs = {np.diff(Vgs).mean():.4f}V)")
 
-# print("vinmax", Vin_max)
-# print(clean_data)
+# ============ VẼ 2 SUBPLOT ============
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
-fig, axes = plt.subplots(figsize=(6,4))
-axes.set_ylim(-1*(10**-4), (Vin_max+2)*(10**-4))
+# --- Subplot 1: family curves ---
+colors = plt.cm.viridis(np.linspace(0, 0.9, len(blocks)))
+for block, c in zip(blocks, colors):
+    vgs_val = block["V(vin)"].iloc[0]
+    ax1.plot(block["V(vdd)"], block["Id(M1)"], color=c, label=f"Vgs={vgs_val:.1f}V")
+ax1.set_xlabel("Vds (V)")
+ax1.set_ylabel("Id (A)")
+ax1.set_title("Id–Vds family curves")
+ax1.legend(fontsize=8)
+ax1.grid(alpha=0.3)
 
-axes2 = axes.twinx()
-axes2.set_ylim(-1, Vin_max+2)
-for i in range(cout_steps):
+# --- Subplot 2: Vth extraction ---
+tangent = Id_t + gm_max * (Vgs - Vgs_t)
+ax2.plot(Vgs, Id_vth, color='#2a78d6', label="Id–Vgs (data)")
+ax2.plot(Vgs, tangent, '--', color='#eb6834', label="Tiếp tuyến (gm max)")
+ax2.axhline(0, color='black', linewidth=0.8)
+ax2.axvline(Vth, color='red', linestyle=':', label=f"Vth = {Vth:.3f}V")
+ax2.set_ylim(min(Id_vth)*1.2, max(Id_vth)*1.2)
+ax2.set_xlabel("Vgs (V)")
+ax2.set_ylabel("Id (A)")
+ax2.set_title(f"Vth extraction (linear extrapolation)")
+ax2.legend(fontsize=8)
+ax2.grid(alpha=0.3)
 
-	if i < cout_steps-1:
-		V_dd = np.array(data["V(vdd)"].iloc[steps[-1][i]+1:steps[-1][i+1]-1])
-		Id = np.array(data["Id(M1)"].iloc[steps[-1][i]+1:steps[-1][i+1]-1])
-		V_in = np.array(data["V(vin)"].iloc[steps[-1][i]+1:steps[-1][i+1]-1])
-
-		
-		# print(data["V(vdd)"].iloc[steps[-1][i]+1:steps[-1][i+1]-1])
-	else:
-		V_dd = np.array(data["V(vdd)"].iloc[steps[-1][i]-1:])
-		Id = np.array(data["Id(M1)"].iloc[steps[-1][i]-1:])
-		V_in = np.array(data["V(vin)"].iloc[steps[-1][i]-1:])
-		
-
-
-	axes.plot(V_dd, Id )
-	axes2.plot(V_dd, V_in, label=f"{steps[i]}")
-
-axes2.legend()
+fig.suptitle("NMOS Characterization")
 fig.tight_layout()
-fig.savefig("Image_visualized.png", dpi=300, bbox_inches='tight')
-fig.title("Threshold Voltage")
-
-plt.title("Visualizes MOSFET")
-plt.legend()
+fig.savefig("MOSFET_full_analysis.png", dpi=300, bbox_inches='tight')
 plt.show()
