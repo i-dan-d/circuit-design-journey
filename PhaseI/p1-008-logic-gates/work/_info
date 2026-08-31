@@ -1,0 +1,103 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dF:/Circuit_Design/intelFPGA_lite/20.1
+vbehavioral
+!s110 1788175506
+!i10b 1
+!s100 Of71KE0HUFX06d3Ne]97a0
+Z0 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I?VWFz2gX@[IZjQP[z>cCz3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dF:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates
+w1788175503
+8F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v
+FF:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v
+!i122 3
+L0 1 6
+Z3 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1788175506.000000
+!s107 F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+vdataflow
+!s110 1788176205
+!i10b 1
+!s100 ;2blOAo[kzM66f9NMZS@l1
+R0
+Ic`b:>belYAU@J6CNV^2Xe2
+R1
+R2
+w1788175235
+8dataflow.v
+Fdataflow.v
+!i122 8
+Z6 L0 1 5
+R3
+r1
+!s85 0
+31
+!s108 1788176205.000000
+!s107 dataflow.v|F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/tb_and.v|
+Z7 !s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/tb_and.v|
+!i113 1
+R4
+R5
+vgate_level
+!s110 1788175138
+!i10b 1
+!s100 gP[z>cWc`CU@<:YG16J5C2
+R0
+I3E9QRS2lk>>CnHlYX]RVC3
+R1
+R2
+w1788175134
+8F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v
+FF:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v
+!i122 0
+R6
+R3
+r1
+!s85 0
+31
+!s108 1788175138.000000
+!s107 F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v|
+!i113 1
+R4
+R5
+vtb_and
+!s110 1788176250
+!i10b 1
+!s100 ?TOLD9?A2;z^K`Rnbf5D60
+R0
+IVQ;KR1ohMIOR]LF;e>iNQ2
+R1
+R2
+w1788176244
+8F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/tb_and.v
+FF:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/tb_and.v
+!i122 9
+L0 1 16
+R3
+r1
+!s85 0
+31
+!s108 1788176250.000000
+!s107 F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/tb_and.v|
+R7
+!i113 1
+R4
+R5

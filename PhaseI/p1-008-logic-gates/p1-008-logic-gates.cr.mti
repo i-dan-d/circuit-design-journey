@@ -1,0 +1,22 @@
+F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/dataflow.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/dataflow.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module dataflow
+
+Top level modules:
+	dataflow
+
+} {} {}} F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/gate_level.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module gate_level
+
+Top level modules:
+	gate_level
+
+} {} {}} F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/p1-008-logic-gates/behavioral.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module behavioral
+
+Top level modules:
+	behavioral
+
+} {} {}}
