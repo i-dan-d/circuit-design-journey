@@ -1,0 +1,44 @@
+module encoder823(output reg [2:0] out, input [7:0] y, input e, output reg valid);
+ reg [7:0] D;
+ always @(*) begin
+  valid = (y[7]|y[6]|y[5]|y[4]|y[3]|y[2]|y[1]|y[0]);
+  D[7] = y[7]&e;
+  D[6] = y[6]&~y[7]&e;
+  D[5] = y[5]&~y[7]&~y[6]&e;
+  D[4] = y[4]&~y[7]&~y[6]&~y[5]&e;
+  D[3] = y[3]&~y[7]&~y[6]&~y[5]&~y[4]&e;
+  D[2] = y[2]&~y[7]&~y[6]&~y[5]&~y[4]&~y[3]&e;
+  D[1] = y[1]&~y[7]&~y[6]&~y[5]&~y[4]&~y[3]&~y[2]&e;
+  D[0] = y[0]&~y[7]&~y[6]&~y[5]&~y[4]&~y[3]&~y[2]&~y[1]&e;
+
+  out = {(D[7] | D[6] | D[5] | D[4]),(D[7] | D[6] | D[3] | D[2]), (D[7] | D[5]| D[3] | D[1])};
+ end
+endmodule
+
+module tb_encoder823;
+ reg [7:0] Y = 8'b0;
+ wire [2:0] out;
+ wire valid;
+ reg e;
+ integer x;
+
+ encoder823 scd823(out, Y, e, valid);
+ initial begin
+  
+  #10 $display("| e i7 i6 i5 i4 i3 i2 i1 i0 | A2 A1 A0 | val |");
+  #5 e = 0;
+  #10 $display("| %b %b  %b  %b  %b  %b  %b  %b  %b  | %b  %b  %b  |  %b  |", e, Y[7], Y[6], Y[5], Y[4], Y[3], Y[2], Y[1], Y[0],
+                                                                          out[2], out[1], out[0], valid);
+  #5 e = 1;
+  #10 Y[6] = 1; Y[3] = 1;
+  #10 $display("| %b %b  %b  %b  %b  %b  %b  %b  %b  | %b  %b  %b  |  %b  |", e, Y[7], Y[6], Y[5], Y[4], Y[3], Y[2], Y[1], Y[0],
+                                                                          out[2], out[1], out[0], valid);
+  for (x = 0; x<8; x = x+1) begin
+   Y[x] = 1;
+  #10 $display("| %b %b  %b  %b  %b  %b  %b  %b  %b  | %b  %b  %b  |  %b  |", e, Y[7], Y[6], Y[5], Y[4], Y[3], Y[2], Y[1], Y[0],
+                                                                          out[2], out[1], out[0], valid );
+   Y[x] = 0;
+   end
+end
+endmodule
+
