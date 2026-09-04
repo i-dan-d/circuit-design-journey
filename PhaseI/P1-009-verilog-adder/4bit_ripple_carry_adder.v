@@ -19,19 +19,16 @@ module tb_ripple_carry_adder4bit;
  initial begin
   for (x=0; x<16; x=x+1) begin
    for (y=0; y<16; y=y+1) begin
-    #10;
+    #3;
     if ({cout[3], sum} !== (a + b + cin)) begin
      errors = errors+1;
-     $display("| %b + %b = %b <=> %d + %d = %d |", a, b, {cout[3], sum}, a, b, {cout[3], sum});
+     $display("FAILED| %b + %b = %b <=> %d + %d = %d |", a, b, {cout[3], sum}, a, b, {cout[3], sum});
     end
+    else $display("PASS| %b + %b = %b <=> %d + %d = %d |", a, b, {cout[3], sum}, a, b, {cout[3], sum});
     b = b+1;
    end
    a = a+1;
   end
-  if (errors == 0)
-   $display("ALL 256 TESTS PASSED");
-  else
-   $display("FAILED: %0d errors", errors);
  end
 endmodule
  
