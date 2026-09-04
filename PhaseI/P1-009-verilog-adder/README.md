@@ -14,6 +14,8 @@ Testbench: test tất cả combination, bao gồm overflow
 
 Python: script verify output của simulation tự động
 
-Done When
+Completed
 
 4-bit ripple carry adder: testbench pass 100% (tất cả 256 input combinations), có timing comparison với Half Adder trong waveform
+
+![Timing comparison HAandFA](./Timing_comparison_HAandFA.png)
