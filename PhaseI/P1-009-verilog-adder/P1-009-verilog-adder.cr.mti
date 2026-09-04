@@ -1,0 +1,24 @@
+F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ripple_carry_adder4bit
+-- Compiling module tb_ripple_carry_adder4bit
+
+Top level modules:
+	tb_ripple_carry_adder4bit
+
+} {} {}} F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module half_adder
+
+Top level modules:
+	half_adder
+
+} {} {}} F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v {1 {vlog -work work -stats=none F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module full_adder
+-- Compiling module tb_full_adder
+
+Top level modules:
+	tb_full_adder
+
+} {} {}}
