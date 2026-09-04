@@ -1,0 +1,12 @@
+run -all
+# PASSED| 0   0   |   0   |
+# PASSED| 0   1   |   1   |
+# PASSED| 1   0   |   0   |
+# PASSED| 1   1   |   1   |
+# Compile of decoder.v was successful.
+# Compile of demultiplexer124.v was successful.
+# Compile of encoder.v was successful.
+# Compile of mux421.v was successful.
+# 4 compiles, 0 failed with no errors.
+# End time: 17:33:48 on Sep 04,2026, Elapsed time: 0:25:29
+# Errors: 0, Warnings: 7

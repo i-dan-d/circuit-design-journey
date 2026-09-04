@@ -19,7 +19,7 @@ module tb_ripple_carry_adder4bit;
  initial begin
   for (x=0; x<16; x=x+1) begin
    for (y=0; y<16; y=y+1) begin
-    #5;
+    #3;
     if ({cout[3], sum} !== (a + b + cin)) begin
      errors = errors+1;
      $display("FAILED| %b + %b = %b <=> %d + %d = %d |", a, b, {cout[3], sum}, a, b, {cout[3], sum});

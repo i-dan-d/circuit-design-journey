@@ -1,0 +1,20 @@
+#  run -all
+# PASSED| 0 0  0  0  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 0  0  1  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 0  1  0  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 0  1  1  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 1  0  0  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 1  0  1  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 1  1  0  | 0 0 0 0 0 0 0 0 |
+# PASSED| 0 1  1  1  | 0 0 0 0 0 0 0 0 |
+# PASSED| 1 0  0  0  | 0 0 0 0 0 0 0 1 |
+# PASSED| 1 0  0  1  | 0 0 0 0 0 0 1 0 |
+# PASSED| 1 0  1  0  | 0 0 0 0 0 1 0 0 |
+# PASSED| 1 0  1  1  | 0 0 0 0 1 0 0 0 |
+# PASSED| 1 1  0  0  | 0 0 0 1 0 0 0 0 |
+# PASSED| 1 1  0  1  | 0 0 1 0 0 0 0 0 |
+# PASSED| 1 1  1  0  | 0 1 0 0 0 0 0 0 |
+# PASSED| 1 1  1  1  | 1 0 0 0 0 0 0 0 |
+#  quit -f
+# End time: 18:33:55 on Sep 04,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

@@ -10,7 +10,7 @@ z2
 cModel Technology
 dF:/Circuit_Design/circuit-design-journey/PhaseI
 vfull_adder
-Z0 !s110 1788435939
+Z0 !s110 1788512443
 !i10b 1
 !s100 @>GAfiCB>H80NW;j7;49L2
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -20,20 +20,20 @@ Z3 dF:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder
 Z4 w1788435927
 Z5 8F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v
 Z6 FF:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v
-!i122 40
+!i122 54
 L0 2 6
 Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1788435939.000000
+Z8 !s108 1788512443.000000
 Z9 !s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v|
 Z10 !s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/full_adder.v|
 !i113 1
 Z11 o-work work
 Z12 tCvgOpt 0
 vhalf_adder
-!s110 1788435252
+R0
 !i10b 1
 !s100 nGCk=a3k>A_]8Vm>@]ob;0
 R1
@@ -43,37 +43,37 @@ R3
 w1788435246
 8F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v
 FF:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v
-!i122 37
+!i122 53
 L0 1 7
 R7
 r1
 !s85 0
 31
-!s108 1788435252.000000
+R8
 !s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/half_adder.v|
 !i113 1
 R11
 R12
 vripple_carry_adder4bit
-Z13 !s110 1788509147
+Z13 !s110 1788512444
 !i10b 1
 !s100 4>Km?9W`b24fBFSMLTX?o2
 R1
 Im2Fn:R5mJX>eJLChXOC?51
 R2
 R3
-Z14 w1788509140
+Z14 w1788511762
 Z15 8F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v
 Z16 FF:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v
-!i122 49
+!i122 55
 L0 1 9
 R7
 r1
 !s85 0
 31
-Z17 !s108 1788509147.000000
-!s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v|
+R8
+Z17 !s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v|
 Z18 !s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v|
 !i113 1
 R11
@@ -89,7 +89,7 @@ R3
 R4
 R5
 R6
-!i122 40
+!i122 54
 L0 9 24
 R7
 r1
@@ -102,7 +102,7 @@ R10
 R11
 R12
 vtb_ha_fa
-!s110 1788506477
+R13
 !i10b 1
 !s100 L:zlXWYAm9aO?C6RHR^WL2
 R1
@@ -112,13 +112,13 @@ R3
 w1788488757
 8F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/tb_ha&fa.v
 FF:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/tb_ha&fa.v
-!i122 46
+!i122 56
 L0 1 17
 R7
 r1
 !s85 0
 31
-!s108 1788506477.000000
+!s108 1788512444.000000
 !s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/tb_ha&fa.v|
 !s90 -reportprogress|300|-work|work|-stats=none|F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/tb_ha&fa.v|
 !i113 1
@@ -150,22 +150,22 @@ R12
 vtb_ripple_carry_adder4bit
 R13
 !i10b 1
-!s100 <DW>1^e[9Wi=bA4]`H2bK3
+!s100 W_0z8DYCo`8aDT68Ll]1`0
 R1
-ITHN`]e82E9ei6Pe3];7]52
+I[^RZZjkdE9Jd>UaIYFKM`0
 R2
 R3
 R14
 R15
 R16
-!i122 49
+!i122 55
 L0 11 23
 R7
 r1
 !s85 0
 31
+R8
 R17
-Z19 !s107 F:/Circuit_Design/circuit-design-journey/PhaseI/P1-009-verilog-adder/4bit_ripple_carry_adder.v|
 R18
 !i113 1
 R11

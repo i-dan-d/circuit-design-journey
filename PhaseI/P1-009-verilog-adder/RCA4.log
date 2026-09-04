@@ -790,3 +790,19 @@ run -all
 # PASS| 1111 + 1101 = 11100 <=> 15 + 13 = 28 |
 # PASS| 1111 + 1110 = 11101 <=> 15 + 14 = 29 |
 # PASS| 1111 + 1111 = 11110 <=> 15 + 15 = 30 |
+# Compile of 4bit_ripple_carry_adder.v was successful.
+# Compile of 4bit_ripple_carry_adder.v was successful.
+vsim -gui work.int(len(failed_lines[x][0])
+# ambiguous command name "x": x_image xilinx_edition xilinx_starter xml2ucdb xprop
+vsim -gui work.tb_ripple_carry_adder4bit
+# End time: 15:49:47 on Sep 04,2026, Elapsed time: 0:20:47
+# Errors: 0, Warnings: 3
+# vsim -gui work.tb_ripple_carry_adder4bit 
+# Start time: 15:49:47 on Sep 04,2026
+# Loading work.tb_ripple_carry_adder4bit
+# Loading work.ripple_carry_adder4bit
+# Loading work.full_adder
+# Loading work.half_adder
+transcript file ../p1-011-script-simulation-automation
+# can't set "::PrefMain(file)": couldn't open "../p1-011-script-simulation-automation": permission denied
+transcript file ../p1-011-script-simulation-automation/4RCA.log
