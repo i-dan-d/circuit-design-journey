@@ -1,5 +1,5 @@
-# vsim -c -do "transcript file transcript.log; run -all; quit -f" tb_decoder328 
-# Start time: 18:33:54 on Sep 04,2026
+# vsim -c tb_decoder328 -do "transcript file temp/transcript.log; run -all; quit -f" 
+# Start time: 15:50:27 on Sep 05,2026
 # Loading work.tb_decoder328
 # Loading work.decoder328
-# transcript file transcript.log
+# transcript file temp/transcript.log

@@ -1,36 +1,29 @@
-# ==========================================
-# MAKEFILE FOR MODELSIM AUTOMATION (WINDOWS)
-# ==========================================
+# # ==========================================
+# # MAKEFILE FOR MODELSIM AUTOMATION (WSL)
+# # ==========================================
+COMPILER = 
 
-export TMP = C:/temp
-export TEMP = C:/temp
 
-SIM = vsim
-VSIM_FLAGS = -c -do "transcript file transcript.log; run -all; quit -f"
-PYTHON = python
-
-TB_SRC    = F:/Circuit_Design/circuit-design-journey/PhaseI/p1-010-verilog-decoder-encoder-multiplexer-demultiplexer/decoder.v
-TB_MODULE = tb_decoder328
-LOG_FILE  = transcript.log
-
-all: report
-
-# 1. Sử dụng mkdir -p chuẩn Bash/Linux
+TB_SRC    ?= ../p1-010-verilog-decoder-encoder-multiplexer-demultiplexer/decoder.v
+TB_MODULE ?= tb_decoder328
+LOG_FILE  ?= transcript.log
+TEMP_DIR = temp
+WORK_DIR = work
+PYTHON_CR = main.py
+all:clean report
 compile:
-	mkdir -p C:/temp
-	vlib work
-	vlog $(TB_SRC)
+	mkdir -p $(TEMP_DIR)
+	vlib.exe $(WORK_DIR)
+	vlog.exe $(TB_SRC)
+simulation: compile
+	vsim.exe -c $(TB_MODULE) -do "transcript file $(TEMP_DIR)/$(LOG_FILE); run -all; quit -f" 
+	
 
-# 2. Chạy mô phỏng ModelSim
-sim: compile
-	$(SIM) $(VSIM_FLAGS) $(TB_MODULE)
+report: simulation
+	python.exe $(PYTHON_CR) --log ./$(TEMP_DIR)/$(LOG_FILE)
 
-# 3. Phân tích kết quả bằng Python Script
-report: sim
-	$(PYTHON) main.py --log $(LOG_FILE)
-
-# 4. Dọn dẹp thư mục làm việc
 clean:
-	rm -rf work $(LOG_FILE) *.wlf vsim.wlf C:/temp
+	rm -rf $(WORK_DIR)/*
+	rm -rf $(TEMP_DIR)/$(LOG_FILE)
 
 .PHONY: all compile sim report clean
